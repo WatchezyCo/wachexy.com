@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watchezy - Premium Apple Watch Bracelets & Mouses</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    :root {
+      --color-bg: #fafafa;
+      --color-primary: #0071e3; /* Apple blue accent */
+      --color-text-primary: #1d1d1f;
+      --color-text-secondary: #6e6e73;
+      --color-border: #d1d1d6;
+      --color-shadow: rgba(0,0,0,0.05);
+      --radius: 12px;
+      --transition: 0.3s ease-out;
+      --max-width: 1200px;
+      --spacing: 1.5rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text-secondary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+    a:hover,
+    a:focus-visible {
+      color: #004bb5;
+      outline-offset: 3px;
+      outline: 2px solid #cce4ff;
+      border-radius: var(--radius);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 2px 4px var(--color-shadow);
+      z-index: 9999;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.375rem;
+      color: var(--color-text-primary);
+      user-select: none;
+      letter-spacing: -0.02em;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      font-size: 1rem;
+    }
+
+    nav a {
+      padding: 4px 0;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 0;
+      bottom: -2px;
+      left: 0;
+      background: var(--color-primary);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+
+    nav a:hover::after,
+    nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .hero {
+      text-align: center;
+      color: var(--color-text-primary);
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    @media (min-width: 600px) {
+      .hero h1 {
+        font-size: 3.75rem;
+      }
+    }
+
+    .hero p {
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 2.25rem;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.125rem;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+      transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background-color: #005bb5;
+      outline: none;
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 91, 181, 0.6);
+    }
+
+    section.products {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      justify-items: center;
+    }
+
+    @media (min-width: 768px) {
+      section.products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 10px var(--color-shadow);
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: center;
+      transition: box-shadow var(--transition), transform var(--transition);
+      user-select: none;
+    }
+
+    .product-card:focus-within,
+    .product-card:hover {
+      box-shadow: 0 9px 28px rgba(0, 0, 0, 0.12);
+      transform: translateY(-6px);
+      outline: none;
+    }
+
+    .product-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      fill: var(--color-primary);
+      transform-origin: center;
+      user-select: none;
+      transition: transform var(--transition);
+    }
+
+    .product-card:focus-within .product-icon,
+    .product-card:hover .product-icon {
+      transform: scale(1.08);
+    }
+
+    .product-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0;
+      user-select: text;
+    }
+
+    .product-description {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      margin: 0;
+      user-select: text;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      user-select: none;
+    }
+
+    /* Utility for screen reader only content */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container">
+      <div class="logo" tabindex="0" aria-label="Watchezy brand logo">Watchezy</div>
+      <nav role="navigation" aria-label="Primary Navigation">
+        <a href="#products" tabindex="0">Products</a>
+        <a href="#about" tabindex="0">About</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" role="region" aria-labelledby="hero-title">
+      <h1 id="hero-title">Premium Electronic Accessories for Your Apple Devices</h1>
+      <p>Your destination for elegant Apple Watch bracelets and high-precision mouses, crafted with sophistication.</p>
+      <a href="#products" class="btn-primary" role="button" tabindex="0">Explore Our Products</a>
+    </section>
+
+    <section id="products" class="products" role="region" aria-labelledby="products-title">
+      <h2 id="products-title" class="sr-only">Featured Products</h2>
+
+      <article class="product-card" tabindex="0" aria-label="Apple Watch Bracelets product">
+        <a href="bracelets.html" style="all: unset; cursor:pointer;">
+          <svg class="product-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect x="18" y="20" width="28" height="24" rx="6" ry="6" stroke="none" fill="currentColor" />
+            <rect x="26" y="10" width="12" height="10" rx="3" ry="3" stroke="none" fill="currentColor" />
+            <rect x="26" y="44" width="12" height="10" rx="3" ry="3" stroke="none" fill="currentColor" />
+          </svg>
+          <h3 class="product-title">Apple Watch Bracelets</h3>
+          <p class="product-description">High-quality, stylish bracelets compatible with all Apple Watch Series. Available in multiple materials and colors.</p>
+          <div class="btn-primary" tabindex="-1" aria-hidden="true">View Details</div>
+        </a>
+      </article>
+
+      <article class="product-card" tabindex="0" aria-label="Apple-compatible Mouses product">
+        <svg class="product-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" role="img">
+          <ellipse cx="32" cy="32" rx="22" ry="30" fill="currentColor"/>
+          <rect x="28" y="12" width="8" height="20" rx="2" ry="2" fill="#fafafa" />
+          <line x1="32" y1="32" x2="32" y2="50" stroke="#fafafa" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <h3 class="product-title">Precision Mouses</h3>
+        <p class="product-description">Ergonomic and efficient mouses that seamlessly integrate with Mac devices. Smooth, comfortable, and precise.</p>
+        <a href="#contact" class="btn-primary" role="button" tabindex="0">Buy Now</a>
+      </article>
+    </section>
+
+    <section id="about" role="region" aria-labelledby="about-title" style="max-width:720px; margin: 0 auto; text-align:center; color: var(--color-text-primary);">
+      <h2 id="about-title" style="font-weight: 700; font-size: 1.875rem; margin-bottom: 1rem;">About Watchezy</h2>
+      <p style="font-size: 1.125rem; line-height: 1.5; user-select: text;">
+        At Watchezy, we believe that technology accessories should be as exquisite as the devices they complement.
+        We curate only the finest Apple Watch bracelets and mouses, combining premium materials with seamless design.
+      </p>
+    </section>
+
+    <section id="contact" role="region" aria-labelledby="contact-title" style="max-width: 480px; margin: 3rem auto 0; text-align:center;">
+      <h2 id="contact-title" style="font-weight:700; font-size:1.5rem; color: var(--color-text-primary); margin-bottom: 1rem;">Get in Touch</h2>
+      <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+        Interested in our products? Reach out to us for inquiries, orders, or custom requests.
+      </p>
+      <a href="mailto:watchezymail@gmail.com" class="btn-primary" role="button" tabindex="0" aria-label="Email Watchezy sales team">Email Us</a>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    &copy; 2024 Watchezy. All rights reserved.
+  </footer>
+</body>
+</html>
+
